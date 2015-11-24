@@ -1,0 +1,51 @@
+DROP DATABASE fileServer;
+
+CREATE DATABASE fileServer character set utf8;
+
+##################################################################################################
+
+USE fileServer;
+
+##################################################################################################
+#
+#                    For fileServer
+#
+##################################################################################################
+#
+
+CREATE TABLE IF NOT EXISTS filedetail (
+id BIGINT NOT NULL AUTO_INCREMENT,
+originalname VARCHAR(255),
+systemname VARCHAR(255) NOT NULL,
+parentsysname VARCHAR(255),
+contenttype VARCHAR(255),
+size BIGINT,  
+location VARCHAR(255),
+createdate datetime,
+extrainfo VARCHAR(255),
+PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS filesublocation (
+id BIGINT NOT NULL AUTO_INCREMENT,
+subfolder VARCHAR(18) NOT NULL,
+size INT,
+maxsize INT,
+PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE `fileServer`.`filesublocation` 
+ADD UNIQUE INDEX `subfolder_UNIQUE` (`subfolder` ASC) ;
+
+# size: total uploaded files in current folder
+# maxsize: total allowed uploaded files in current folder (this number is the suggestion number, which means the system still can upload files into the folder even the size>=maxsize)
+
+
+
+
+
+# insert data for filesublocation
+#INSERT INTO `fileServer`.`filesublocation` (`id`, `subfolder`, `size`, `maxsize`) VALUES (1, 'aaaaaaaaaa', 0, 10);
+#INSERT INTO `fileServer`.`filesublocation` (`id`, `subfolder`, `size`, `maxsize`) VALUES (2, 'aaaaaaaaab', 0, 100);
+#INSERT INTO `fileServer`.`filesublocation` (`id`, `subfolder`, `size`, `maxsize`) VALUES (3, 'aaaaaaaaac', 0, 1000);
+#INSERT INTO `fileServer`.`filesublocation` (`id`, `subfolder`, `size`, `maxsize`) VALUES (4, 'aaaaaaaaad', 0, 1000);

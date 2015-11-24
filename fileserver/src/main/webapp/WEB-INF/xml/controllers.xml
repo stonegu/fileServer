@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+	<!-- Scans within the base package of the application for @Components to configure as beans -->
+	<context:component-scan base-package="com.fileServer.core.controller" />
+	<context:component-scan base-package="com.fileServer.core.service" />
+	<context:component-scan base-package="com.fileServer.core.hibernate" />
+	<context:component-scan base-package="com.fileServer.core.configuration" />
+	
+<!-- 
+	<mvc:interceptors>
+		<bean class="com.bizislife.core.controller.LoginInterceptor">
+			<property name="loginURI" value="/login"/>
+			<property name="outsidePages">
+				<array>
+					<value>/initialDb</value>
+					<value>/</value>
+					<value>/organizations</value>
+				</array>
+			</property>
+		</bean>
+	</mvc:interceptors>
+ -->
+
+</beans>
